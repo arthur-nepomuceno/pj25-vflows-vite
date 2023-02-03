@@ -1,11 +1,13 @@
-import styled from 'styled-components'
-import logo from '../assets/logo.png'
+import styled from 'styled-components';
+import logo from '../assets/logo.png';
+import { CgSearch } from 'react-icons/cg';
+
 
 export default function Contracts() {
     return (
         <Container>
             <div id='title'>
-                <img src={logo} alt='VFlows'/>
+                <img src={logo} alt='VFlows' />
                 <h1>PAGAMENTO DE FORNECEDOR</h1>
             </div>
             <div id='data'>
@@ -33,66 +35,86 @@ export default function Contracts() {
                             <th id='details'>Detalhes</th>
                         </tr>
                         <tr id='data'>
-                            <td id='checkbox'>box</td>
+                            <td id='checkbox'>
+                                <input type='checkbox' />
+                            </td>
                             <td id='name'>Título do Primeiro Contrado de exemplo</td>
                             <td id='code'>11002200-01</td>
                             <td id='retention'>5%</td>
-                            <td>detalhes</td>
+                            <td id='details'>
+                                <div>
+                                    <CgSearch style = {{transform: 'rotate(90deg)'}}/>
+                                </div>
+                            </td>
                         </tr>
                         <tr id='data'>
-                            <td id='checkbox'>box</td>
+                            <td id='checkbox'>
+                                <input type='checkbox' />
+                            </td>
                             <td id='name'>Título do Segundo Contrado de exemplo</td>
                             <td id='code'>22003300-01</td>
-                            <td id='retention'>7%</td>
+                            <td id='retention'>10%</td>
                             <td id='details'>detalhes</td>
                         </tr>
                         <tr id='data'>
-                            <td id='checkbox'>box</td>
-                            <td id='name'>Título do Segundo Contrado de exemplo</td>
+                            <td id='checkbox'>
+                                <input type='checkbox' />
+                            </td>
+                            <td id='name'>Título do Terceiro Contrado de exemplo</td>
                             <td id='code'>22003300-01</td>
-                            <td id='retention'>7%</td>
+                            <td id='retention'>5%</td>
                             <td id='details'>detalhes</td>
                         </tr>
                         <tr id='data'>
-                            <td id='checkbox'>box</td>
-                            <td id='name'>Título do Segundo Contrado de exemplo</td>
+                            <td id='checkbox'>
+                                <input type='checkbox' />
+                            </td>
+                            <td id='name'>Título do Quarto Contrado de exemplo</td>
                             <td id='code'>22003300-01</td>
-                            <td id='retention'>7%</td>
+                            <td id='retention'>15%</td>
                             <td id='details'>detalhes</td>
                         </tr>
                         <tr id='data'>
-                            <td id='checkbox'>box</td>
-                            <td id='name'>Título do Segundo Contrado de exemplo</td>
+                            <td id='checkbox'>
+                                <input type='checkbox' />
+                            </td>
+                            <td id='name'>Título do Quinto Contrado de exemplo</td>
                             <td id='code'>22003300-01</td>
-                            <td id='retention'>7%</td>
+                            <td id='retention'>5%</td>
                             <td id='details'>detalhes</td>
                         </tr>
                         <tr id='data'>
-                            <td id='checkbox'>box</td>
-                            <td id='name'>Título do Segundo Contrado de exemplo</td>
+                            <td id='checkbox'>
+                                <input type='checkbox' />
+                            </td>
+                            <td id='name'>Título do Sexto Contrado de exemplo</td>
                             <td id='code'>22003300-01</td>
-                            <td id='retention'>7%</td>
+                            <td id='retention'>15%</td>
                             <td id='details'>detalhes</td>
                         </tr>
                         <tr id='data'>
-                            <td id='checkbox'>box</td>
-                            <td id='name'>Título do Segundo Contrado de exemplo</td>
+                            <td id='checkbox'>
+                                <input type='checkbox' />
+                            </td>
+                            <td id='name'>Título do Sétimo Contrado de exemplo</td>
                             <td id='code'>22003300-01</td>
-                            <td id='retention'>7%</td>
+                            <td id='retention'>5%</td>
                             <td id='details'>detalhes</td>
                         </tr>
                         <tr id='data'>
-                            <td id='checkbox'>box</td>
-                            <td id='name'>Título do Segundo Contrado de exemplo</td>
+                            <td id='checkbox'>
+                                <input type='checkbox' />
+                            </td>
+                            <td id='name'>Título do Oitavo Contrado de exemplo</td>
                             <td id='code'>22003300-01</td>
-                            <td id='retention'>7%</td>
+                            <td id='retention'>10%</td>
                             <td id='details'>detalhes</td>
                         </tr>
                     </table>
                 </div>
             </div>
             <div id='footer'>
-                <img src={logo} alt='VFlows'/>
+                <img src={logo} alt='VFlows' />
                 <button id='previous'>Anterior</button>
                 <button id='next'>Próximo</button>
                 <h5>© 2022-2022 Construindo Patrimônios</h5>
@@ -117,8 +139,6 @@ const Container = styled.div`
         margin-top: 2%;
 
         display: flex;
-
-        border: 1px dashed black
     }
 
     div#title img {
@@ -178,8 +198,6 @@ const Container = styled.div`
         margin-top: 10px;
 
         overflow-y: scroll;
-
-        border: 1px dashed black;
     }
 
     div#contracts::-webkit-scrollbar {
@@ -189,6 +207,8 @@ const Container = styled.div`
     h2#title {
         width: 100%;
         height: 35px;
+
+        font-weight: 600;
 
         border: 1px solid #F26161;
         border-radius: 5px;
@@ -203,17 +223,28 @@ const Container = styled.div`
         height: 81%;
 
         margin-top: 5px;
+        border-collapse: separate;
+        border-spacing: 0 3px;
 
         text-align: center;
     }
 
-    tr#header {
+    tr {
         width: 100%;
         height: 28px;
+    }
 
-        margin-bottom: 7px;
-
+    tr#header {
+        height: 28px;
         background-color: #AAAAAA;
+    }
+
+    tr#data:nth-child(even) {
+        background-color: #EEEEEE;
+    }
+
+    tr#data:nth-child(odd) {
+        background-color: #DDDDDD;
     }
 
     th {
@@ -223,25 +254,35 @@ const Container = styled.div`
         font-weight: 600;
     }
 
-    td {
-        vertical-align: middle;
-    }
-
     th#name, td#name {
         text-align: left;
         padding-left: 13px;
     }
 
-    tr#data:nth-child(even) {
-        width: 100%;
-        height: 25px;
-        background-color: #EEEEEE;
+    td {
+        vertical-align: middle;
     }
 
-    tr#data:nth-child(odd) {
-        width: 100%;
-        height: 25px;
-        background-color: #DDDDDD;
+    td#retention {
+        background-color: #2B70B9;
+        color: #FFFFFF;
+    }
+
+    td#details {
+        font-weight: 600;
+        color: #FFFFFF;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    td#details div {
+        width: 20%;
+        height: 100%;
+        margin-top: 3px;
+        border-radius: 3px;
+        background-color: #2B70B9;
     }
 
     div#footer {
@@ -253,7 +294,6 @@ const Container = styled.div`
 
         position: relative;
 
-        border: 1px dashed black;
     }
 
     div#footer img {
@@ -262,6 +302,7 @@ const Container = styled.div`
 
         position: absolute;
         bottom: 0%;
+        margin-left: 1%;
     }
 
     div#footer h5 {
@@ -288,10 +329,6 @@ const Container = styled.div`
         border: none;
     }
 
-    button:hover {
-        cursor: pointer;
-    }
-
     button#previous {
         background-color: #FFC043;
         right: 34%;
@@ -301,6 +338,10 @@ const Container = styled.div`
     button#next {
         background-color: #448B48;
         right: 0%;
+    }
+
+    button:hover, td#details div:hover {
+        cursor: pointer;
     }
 
 `
