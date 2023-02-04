@@ -9,14 +9,15 @@ import Input from '../components/Input';
 
 export default function NewContract() {
 
-    const {CNPJ} = useContext(DataContext);
+    const {CNPJ, contract} = useContext(DataContext);
     const [taxRetention, setTaxRetention] = useState(true);
     const [technicalRetention, setTechnicalRetention] = useState(true);
-
+    const [techRetentionValue, setTechRetentionValue] = useState(null);
     const navigate = useNavigate();
 
     let company_name;
     let commercial_name;
+
     function getCompanyData(CNPJ){
         const data = CNPJ_List.filter(e => e.number === CNPJ);
         company_name = data[0].company_name;
@@ -53,20 +54,52 @@ export default function NewContract() {
     }
 
     function sendData(data){
-        console.log(data)
+
         if(data.invoice_number === '') alert('Número da Nota obrigatório.')
         if(data.issue_date === '') alert('Data de Emissão obrigatória.')
         if(data.due_date === '') alert('Data de Vencimento obrigatório.')
         if(data.invoice_value === '') alert('Valor obrigatório.')
 
-        if(taxRetention === false){
-            if(data.ISSQN === '') alert('ISSQN deve ser maior do que zero.')
-            if(data.IRRF === '') alert('IRRF deve ser maior do que zero.')
-            if(data.CSLL === '') alert('CSLL deve ser maior do que zero.')
-            if(data.COFINS === '') alert('COFINS deve ser maior do que zero.')
-            if(data.INSS === '') alert('INSS deve ser maior do que zero.')
-            if(data.PIS === '') alert('PIS deve ser maior do que zero.')
+        if(data.ISSQN === '') alert('ISSQN deve ser maior do que zero.')
+        if(data.IRRF === '') alert('IRRF deve ser maior do que zero.')
+        if(data.CSLL === '') alert('CSLL deve ser maior do que zero.')
+        if(data.COFINS === '') alert('COFINS deve ser maior do que zero.')
+        if(data.INSS === '') alert('INSS deve ser maior do que zero.')
+        if(data.PIS === '') alert('PIS deve ser maior do que zero.')
+
+        if(
+            data.invoice_number !== '' &&
+            data.issue_date !== '' &&
+            data.due_date !== '' &&
+            data.invoice_value !== '' &&
+            data.ISSQN !== '' &&
+            data.IRRF !== '' &&
+            data.CSLL !== '' &&
+            data.COFINS !== '' &&
+            data.INSS !== '' &&
+            data.PIS !== ''
+        ){
+            alert('Solicitação 999999 foi enviada com sucesso.')
+            console.log({
+                numero_da_nota: data.invoice_number,
+                data_de_emissao: data.issue_date,
+                data_de_vencimento: data.due_date,
+                valor_da_nota: data.invoice_value,
+                ISSQN: data.ISSQN,
+                IRRF: data.IRRF,
+                CSLL: data.CSLL,
+                COFINS: data.COFINS,
+                INSS: data.INSS,
+                PIS: data.PIS,
+                porcentagem_retencao_tecnica: data.percentage,
+                valor_retencao_tecnica: data.final_value
+            })
         }
+    }
+
+    function calculateTechnicalRetention(invoice_value){
+        const value = (contract.retention / 100 * invoice_value).toFixed(2)
+        setTechRetentionValue(value);
     }
 
     return (
@@ -95,11 +128,13 @@ export default function NewContract() {
                     <div id='invoice-data'>
                         <div id='invoice-head'>
                             <div>
-                                <h2 id='contract-code'>
-                                    Código do Contrato: 11002200-01
-                                </h2>
                                 <h2 id='contract-title'>
-                                    Título do segundo contrato de exemplo
+                                    {contract.title}
+                                </h2>
+                            </div>
+                            <div>
+                                <h2 id='contract-code'>
+                                    Código do Contrato: <p>11002200-01</p>
                                 </h2>
                             </div>
 
@@ -107,7 +142,7 @@ export default function NewContract() {
                             <div id='invoice-fields'>
                                 <div id='invoice_number'>
                                     <h3>Número da Nota</h3>
-                                    <Input type='checkbox' name='invoice_number'/>
+                                    <Input type='number' name='invoice_number'/>
                                 </div>
                                 <div id='issue_date'>
                                     <h3>Data de Emissão</h3>
@@ -119,7 +154,12 @@ export default function NewContract() {
                                 </div>
                                 <div id='invoice_value'>
                                     <h3>Valor</h3>
-                                    <Input type='number' name='invoice_value' step='.01'/>
+                                    <Input
+                                         type='number'
+                                         name='invoice_value'
+                                         step='.01'
+                                         onChange={e => calculateTechnicalRetention(e.target.value)}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -170,11 +210,11 @@ export default function NewContract() {
                                 <div id='technical-retention-data'>
                                     <div id='value'>
                                         <h3>Valor</h3>
-                                        <input/>
+                                        <Input name='final_value' value={techRetentionValue}/>
                                     </div>
                                     <div id='percentage'>
                                         <h3>Percentual</h3>
-                                        <input/>
+                                        <Input name='percentage' value={contract.retention}/>
                                     </div>
                                 </div> : ''
                             }
@@ -314,13 +354,25 @@ const Container = styled.div`
         margin-bottom: 20px;
     }
 
+    /* //dev
+    div#invoice-head > div {
+        border: 1px dashed black;
+    } */
+
     h2#contract-code {
         font-weight: 600;
+        display: flex;
+    }
+
+    h2#contract-code p {
+        font-weight: 400;
+        margin-left: 10px;
     }
 
     h2#contract-title {
+        width: 100%;
+        text-align: center;
         font-size: 15px;
-        margin-left: 21%;
     }
 
     div#invoice-fields {
@@ -337,7 +389,9 @@ const Container = styled.div`
     }
 
     div#invoice-fields input {
+        width: 100%;
         height: 25px;
+        font-size: 17px;
     }
 
     div#invoice-number {
@@ -419,7 +473,9 @@ const Container = styled.div`
     }
 
     div#technical-retention-data input {
-        height: 20px;
+        height: 25px;
+        font-size: 17px;
+        background-color: #BBBBBB;
     }
 
     div#value {

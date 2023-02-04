@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import logo from '../assets/images/logo.png';
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { useNavigate } from 'react-router';
 import DataContext from '../contexts/DataContext';
 import { CNPJ_List, contractList } from '../database/database';
@@ -10,12 +10,15 @@ import { CgSearch } from 'react-icons/cg';
 export default function Contracts() {
 
     const {CNPJ, setCNPJ, setContract} = useContext(DataContext);
-    const [checked, setChecked] = useState(false);
-    const [count, setCount] = useState(0);
     const navigate = useNavigate();
-
+    let count = 0;
     let company_name;
     let commercial_name;
+    let contract_code;
+    let contract_title;
+    let contract_retention;
+
+
     function getUserContracts(CNPJ){
         const data = CNPJ_List.filter(e => e.number === CNPJ);
         company_name = data[0].company_name;
@@ -23,13 +26,30 @@ export default function Contracts() {
     }
     getUserContracts(CNPJ);
 
+    function handleCheckbox(checked, value, name){
+        if(checked) count++;
+        if(!checked) count--;
+
+        contract_title = name;
+        contract_retention = value.replace('%','');
+    }
+
+    function displayContractInfo(){
+        alert(`...em construção...`)
+    }
+
     function returnToLogin(){
         setCNPJ('');
         navigate('/');
     }
 
     function next(){
-        navigate('/new-contract');
+        if(count === 0) alert('Ao menos um Contrato deverá ser selecionado.')
+        if(count > 1) alert('Somente um Contrato deverá ser selecionado.')
+        if(count === 1) {
+            setContract({title: contract_title, retention: contract_retention})
+            navigate('/new-contract');
+        }
     }
 
     return (
@@ -67,12 +87,21 @@ export default function Contracts() {
                                 contract =>
                                 <tr id='data'>
                                     <td id='checkbox'>
-                                        <input type='checkbox' value={contract.retention}/>
+                                        <input
+                                            type='checkbox'
+                                            name={contract.name}
+                                            value={contract.retention}
+                                            onChange={e => handleCheckbox(
+                                                e.target.checked,
+                                                e.target.value,
+                                                e.target.name
+                                            )}
+                                        />
                                     </td>
                                     <td id='name'>{contract.name}</td>
                                     <td id='code'>{contract.code}</td>
                                     <td id='retention'>{contract.retention}</td>
-                                    <td id='details'>
+                                    <td id='details' onClick={displayContractInfo}>
                                         <div>
                                             <CgSearch style = {{transform: 'rotate(90deg)'}}/>
                                         </div>
@@ -85,7 +114,7 @@ export default function Contracts() {
             </div>
             <div id='footer'>
                 <img src={logo} alt='VFlows' />
-                <button id='previous' tyoe='button' onClick={returnToLogin}>Anterior</button>
+                <button id='previous' type='button' onClick={returnToLogin}>Anterior</button>
                 <button id='next' type='submit' onClick={next}>Próximo</button>
                 <h5>© 2022-2022 Construindo Patrimônios</h5>
             </div>
