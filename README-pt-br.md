@@ -1,5 +1,5 @@
 ##### **Read in english:**
-[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/arthur-nepomuceno/pj20-my-repoprovas/blob/master/README.md)
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/arthur-nepomuceno/pj25-vflows-vite/blob/master/README.md)
 
 <p align="center">
    <img src="src/assets/images/logo.png" alt="VFlows" width="200px" style="background:#373435; padding:16px"/>
