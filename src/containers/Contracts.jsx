@@ -14,7 +14,6 @@ export default function Contracts() {
     let count = 0;
     let company_name;
     let commercial_name;
-    let contract_code;
     let contract_title;
     let contract_retention;
 

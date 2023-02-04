@@ -9,7 +9,7 @@ import Input from '../components/Input';
 
 export default function NewContract() {
 
-    const {CNPJ, contract} = useContext(DataContext);
+    const {CNPJ, setCNPJ, contract} = useContext(DataContext);
     const [taxRetention, setTaxRetention] = useState(true);
     const [technicalRetention, setTechnicalRetention] = useState(true);
     const [techRetentionValue, setTechRetentionValue] = useState(null);
@@ -50,22 +50,22 @@ export default function NewContract() {
     }
 
     function attachInvoice(){
-        alert('...em construção...')
+        alert('Em breve habilitaremos esta funcionalidade.')
     }
 
     function sendData(data){
 
-        if(data.invoice_number === '') alert('Número da Nota obrigatório.')
-        if(data.issue_date === '') alert('Data de Emissão obrigatória.')
-        if(data.due_date === '') alert('Data de Vencimento obrigatório.')
-        if(data.invoice_value === '') alert('Valor obrigatório.')
+        if(data.invoice_number === '') alert('Número da Nota obrigatório.');
+        if(data.issue_date === '') alert('Data de Emissão obrigatória.');
+        if(data.due_date === '') alert('Data de Vencimento obrigatório.');
+        if(data.invoice_value === '') alert('Valor obrigatório.');
 
-        if(data.ISSQN === '') alert('ISSQN deve ser maior do que zero.')
-        if(data.IRRF === '') alert('IRRF deve ser maior do que zero.')
-        if(data.CSLL === '') alert('CSLL deve ser maior do que zero.')
-        if(data.COFINS === '') alert('COFINS deve ser maior do que zero.')
-        if(data.INSS === '') alert('INSS deve ser maior do que zero.')
-        if(data.PIS === '') alert('PIS deve ser maior do que zero.')
+        if(data.ISSQN === '') alert('ISSQN deve ser maior do que zero.');
+        if(data.IRRF === '') alert('IRRF deve ser maior do que zero.');
+        if(data.CSLL === '') alert('CSLL deve ser maior do que zero.');
+        if(data.COFINS === '') alert('COFINS deve ser maior do que zero.');
+        if(data.INSS === '') alert('INSS deve ser maior do que zero.');
+        if(data.PIS === '') alert('PIS deve ser maior do que zero.');
 
         if(
             data.invoice_number !== '' &&
@@ -79,7 +79,7 @@ export default function NewContract() {
             data.INSS !== '' &&
             data.PIS !== ''
         ){
-            alert('Solicitação 999999 foi enviada com sucesso.')
+            alert('Solicitação 999999 foi enviada com sucesso.');
             console.log({
                 numero_da_nota: data.invoice_number,
                 data_de_emissao: data.issue_date,
@@ -93,7 +93,9 @@ export default function NewContract() {
                 PIS: data.PIS,
                 porcentagem_retencao_tecnica: data.percentage,
                 valor_retencao_tecnica: data.final_value
-            })
+            });
+            setCNPJ('');
+            navigate('/');
         }
     }
 
