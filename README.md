@@ -2,7 +2,7 @@
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/arthur-nepomuceno/pj20-my-repoprovas/blob/master/README.md)
 
 <p align="center">
-   <img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f4dd.svg" alt="VFlows" style="width: 89px; height: 89px"/>
+   <img src="src/assets/images/logo.png" alt="VFlows" width="200px" style="background:#373435; padding:16px"/>
 </p>
 
 ## <p align = "center">  - VFlows - </p>
@@ -22,7 +22,6 @@ a VFlows proporciona às demais empresas soluções que geram benefícios tangí
    - [Introdução](#introdução)
    - [Conceitos e Tecnologias](#conceitos-e-tecnologias)
    - [Rodando a aplicação](#rodando-a-aplicação)
-   - [Rotas](#rotas)
 
 ***
 
@@ -40,7 +39,20 @@ a VFlows proporciona às demais empresas soluções que geram benefícios tangí
    - Tela de Contratos: tela exibindo os principais dados da empresa, junto com uma lista de contratos para emissão de nota fiscal.
    - Tela de Novo Contrato: tela exibindo os dados da nota fiscal para preenchimento, mediante seleção de contrato na tela anterior.
    
-   Para utilizar a aplicação, insira na tela inicial quaisquer um dos seguintes valores para o CNPJ:
+   Para utilizar a aplicação, insira na tela inicial qualquer um dos seguintes valores para o CNPJ:
+   - 02.828.446/0001-34
+   - 72.610.132/0001-46
+   - 01.874.354/0001-28
+   - 04.220.692/0001-34
+   - 12.146.377/0001-32
+   - 06.034.513/0001-08
+   - 02.006.030/0001-30
+   - 15.358.677/0001-73
+   - 07.744.937/0001-10
+   - 07.126.280/0001-28
+   - 09.159.197/0001-80
+   - 25.144.592/0001-46
+   - 13.715.241/0001-69
    
 ***
 
@@ -62,7 +74,7 @@ Este projeto foi inicializado com o Node Package Manager, então certifique-se q
 Primeiro, faça o clone desse repositório na sua maquina:
 
 ```
-git clone https://github.com/arthur-nepomuceno/pj20-my-repoprovas.git
+git clone https://github.com/arthur-nepomuceno/pj25-vflows-vite.git
 ```
 
 Depois, dentro da pasta, rode o seguinte comando para instalar as dependencias.
