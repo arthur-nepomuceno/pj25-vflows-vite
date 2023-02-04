@@ -1,5 +1,5 @@
-##### **Read in english:**
-[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/arthur-nepomuceno/pj20-my-repoprovas/blob/master/README.md)
+##### **Leia em português:**
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/arthur-nepomuceno/pj25-vflows-vite/blob/master/README-pt-br.md)
 
 <p align="center">
    <img src="src/assets/images/logo.png" alt="VFlows" width="200px" style="background:#373435; padding:16px"/>
@@ -8,38 +8,38 @@
 ## <p align = "center">  - VFlows - </p>
 
 <p align = "center">
-   <img src="https://img.shields.io/badge/autor-Arthur Nepomuceno-093D04?style=flat-square" />
+   <img src="https://img.shields.io/badge/author-Arthur Nepomuceno-093D04?style=flat-square" />
 </p>
 
-## Comece aqui
+## Start here
 
-Este projeto é parte do processo seletivo para a empresa VFlows.
-Especializados em projetos BPM (Business Process Management), através do uso de plataformas de software 
-a VFlows proporciona às demais empresas soluções que geram benefícios tangíveis e transformam o negócio de seus clientes. 
+This project is part of the selection process for the company VFlows.
+Specialized in BPM projects (Business Process Management), through the use of software platforms 
+VFlows provides other companies with solutions that bring tangible benefits and transform the business of their clients. 
 
-## Sumário
-   - [Apresentação](#apresentação)
-   - [Introdução](#introdução)
-   - [Conceitos e Tecnologias](#conceitos-e-tecnologias)
-   - [Rodando a aplicação](#rodando-a-aplicação)
+## Summary
+   - [Brief in](#brief-in)
+   - [Introduction](#introduction)
+   - [Concepts and Technologies](#concepts-and-technologies)
+   - [Running the app](#running-the-app)
 
 ***
 
 
-## Apresentação
-   Este projeto é o front-end de uma aplicação para emissão de folhas de pagamento de fornecedores.
-   Com um CNPJ devidamente registrado e válido, uma empresa pode se conectar, visualizar os contratos disponíveis
-   e então emitir uma nota fiscal, com valores, data e dados de impostos específicos para cada caso.
+## Brief in
+   This project is the front-end of an APP for issuing supplier payrolls.
+   With a valid and previously registered CNPJ, a company can connect, visualize the available contracts
+   and then issue a payroll, with values, date and tax data specifics for each case.
    
 ***
 
-## Introdução
-   Este projeto é desenvolvido em React (ViteJS), constituído de três telas:
-   - Tela de Login: tela de entrada da aplicação. Nela, um usuário informa o CNPJ de sua empresa para acessar as demais telas.
-   - Tela de Contratos: tela exibindo os principais dados da empresa, junto com uma lista de contratos para emissão de nota fiscal.
-   - Tela de Novo Contrato: tela exibindo os dados da nota fiscal para preenchimento, mediante seleção de contrato na tela anterior.
+## Introduction
+   This project is built with React (ViteJS), having three screens:
+   - Login screen: app's entry screen, where an user must inform the CNPJ of one's company to access further options.
+   - Contracts screen: shows the company's main information, along with a list of contracts to issue the payrolls.
+   - New Contract screen: shows the selected contract to be fullfilled.
    
-   Para utilizar a aplicação, insira na tela inicial qualquer um dos seguintes valores para o CNPJ:
+   To make use of the app, insert in the main screen any of the following values for the CNPJ:
    - 02.828.446/0001-34
    - 72.610.132/0001-46
    - 01.874.354/0001-28
@@ -56,7 +56,7 @@ a VFlows proporciona às demais empresas soluções que geram benefícios tangí
    
 ***
 
-## Conceitos e Tecnologias
+## Concepts and Technologies
     - React (ViteJs)
     - React-Router-Dom
     - Styed-Components
@@ -68,24 +68,24 @@ a VFlows proporciona às demais empresas soluções que geram benefícios tangí
 
 ***
 
-## Rodando a aplicação
-Este projeto foi inicializado com o Node Package Manager, então certifique-se que voce tem a ultima versão estável do [Node.js](https://nodejs.org/en/download/) e [npm](https://www.npmjs.com/) rodando localmente.
+## Running-the-app
+This project was built with Node Package Manager, so be sure you have the last version of [Node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/) running locally.
 
-Primeiro, faça o clone desse repositório na sua maquina:
+First, clone this repository to your machine:
 
 ```
 git clone https://github.com/arthur-nepomuceno/pj25-vflows-vite.git
 ```
 
-Depois, dentro da pasta, rode o seguinte comando para instalar as dependencias.
+After, inside the folder, run the following command to install the dependencies.
 
 ```
 npm install
 ```
 
-Finalizado o processo, é só inicializar o servidor
+To finish the process, you simply start the server.
 ```
 npm run dev
 ```
-###### [voltar para o sumário](#sumário)
+###### [back to summary](#summary)
 ***
