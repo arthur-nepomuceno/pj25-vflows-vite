@@ -1,25 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
-import logo from '../assets/logo.png'
+import logo from '../assets/images/logo.png'
 import InputMask from 'react-input-mask';
 import { checkCNPJ } from '../utilities/checkCNPJ';
+import DataContext from '../contexts/DataContext';
 
 export default function Login() {
-    const [CNPJ, setCNPJ] = useState(null);
+
+    const {CNPJ, setCNPJ} = useContext(DataContext);
     const navigate = useNavigate();
 
     function login(input) {
         const check = checkCNPJ(input);
-        
-        setCNPJ('');
 
         if(check){
             navigate('/contracts');
         } else {
             alert('CNPJ Inválido.')
         }
-
     }
 
     return (
@@ -28,7 +27,7 @@ export default function Login() {
             <h1>PAGAMENTO DE FORNECEDOR</h1>
             <div>
                 <h2>CNPJ</h2>
-                <InputMask value={CNPJ} onChange={(e) => { setCNPJ(e.target.value) }} mask='99.999.999/9999-99' required />
+                <InputMask value={CNPJ} onChange={(e) => { setCNPJ(e.target.value) }} mask='99.999.999/9999-99' autoFocus required />
                 <button onClick={() => {login(CNPJ)}}>Acessar</button>
             </div>
         </Container>
@@ -74,7 +73,7 @@ const Container = styled.div`
 
         width: 70%;
         height: 37%;
-        
+
         padding-top: 3%;
     }
 

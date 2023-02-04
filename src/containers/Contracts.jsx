@@ -1,9 +1,37 @@
 import styled from 'styled-components';
-import logo from '../assets/logo.png';
+import logo from '../assets/images/logo.png';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
+import DataContext from '../contexts/DataContext';
+import { CNPJ_List, contractList } from '../database/database';
 import { CgSearch } from 'react-icons/cg';
 
 
 export default function Contracts() {
+
+    const {CNPJ, setCNPJ, setContract} = useContext(DataContext);
+    const [checked, setChecked] = useState(false);
+    const [count, setCount] = useState(0);
+    const navigate = useNavigate();
+
+    let company_name;
+    let commercial_name;
+    function getUserContracts(CNPJ){
+        const data = CNPJ_List.filter(e => e.number === CNPJ);
+        company_name = data[0].company_name;
+        commercial_name = data[0].commercial_name;
+    }
+    getUserContracts(CNPJ);
+
+    function returnToLogin(){
+        setCNPJ('');
+        navigate('/');
+    }
+
+    function next(){
+        navigate('/new-contract');
+    }
+
     return (
         <Container>
             <div id='title'>
@@ -12,13 +40,13 @@ export default function Contracts() {
             </div>
             <div id='data'>
                 <h2 id='company-name'>
-                    Razão Social:
+                    Razão Social: <p>{company_name}</p>
                 </h2>
                 <h2 id='commercial-name'>
-                    Nome Fantasia:
+                    Nome Fantasia: <p>{commercial_name}</p>
                 </h2>
                 <h2 id='number'>
-                    CNPJ: 00.000.000/0000-00
+                    CNPJ: <p>{CNPJ}</p>
                 </h2>
             </div>
             <div id='contracts'>
@@ -34,89 +62,31 @@ export default function Contracts() {
                             <th id='retention'>Retenção Técnica</th>
                             <th id='details'>Detalhes</th>
                         </tr>
-                        <tr id='data'>
-                            <td id='checkbox'>
-                                <input type='checkbox' />
-                            </td>
-                            <td id='name'>Título do Primeiro Contrado de exemplo</td>
-                            <td id='code'>11002200-01</td>
-                            <td id='retention'>5%</td>
-                            <td id='details'>
-                                <div>
-                                    <CgSearch style = {{transform: 'rotate(90deg)'}}/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr id='data'>
-                            <td id='checkbox'>
-                                <input type='checkbox' />
-                            </td>
-                            <td id='name'>Título do Segundo Contrado de exemplo</td>
-                            <td id='code'>22003300-01</td>
-                            <td id='retention'>10%</td>
-                            <td id='details'>detalhes</td>
-                        </tr>
-                        <tr id='data'>
-                            <td id='checkbox'>
-                                <input type='checkbox' />
-                            </td>
-                            <td id='name'>Título do Terceiro Contrado de exemplo</td>
-                            <td id='code'>22003300-01</td>
-                            <td id='retention'>5%</td>
-                            <td id='details'>detalhes</td>
-                        </tr>
-                        <tr id='data'>
-                            <td id='checkbox'>
-                                <input type='checkbox' />
-                            </td>
-                            <td id='name'>Título do Quarto Contrado de exemplo</td>
-                            <td id='code'>22003300-01</td>
-                            <td id='retention'>15%</td>
-                            <td id='details'>detalhes</td>
-                        </tr>
-                        <tr id='data'>
-                            <td id='checkbox'>
-                                <input type='checkbox' />
-                            </td>
-                            <td id='name'>Título do Quinto Contrado de exemplo</td>
-                            <td id='code'>22003300-01</td>
-                            <td id='retention'>5%</td>
-                            <td id='details'>detalhes</td>
-                        </tr>
-                        <tr id='data'>
-                            <td id='checkbox'>
-                                <input type='checkbox' />
-                            </td>
-                            <td id='name'>Título do Sexto Contrado de exemplo</td>
-                            <td id='code'>22003300-01</td>
-                            <td id='retention'>15%</td>
-                            <td id='details'>detalhes</td>
-                        </tr>
-                        <tr id='data'>
-                            <td id='checkbox'>
-                                <input type='checkbox' />
-                            </td>
-                            <td id='name'>Título do Sétimo Contrado de exemplo</td>
-                            <td id='code'>22003300-01</td>
-                            <td id='retention'>5%</td>
-                            <td id='details'>detalhes</td>
-                        </tr>
-                        <tr id='data'>
-                            <td id='checkbox'>
-                                <input type='checkbox' />
-                            </td>
-                            <td id='name'>Título do Oitavo Contrado de exemplo</td>
-                            <td id='code'>22003300-01</td>
-                            <td id='retention'>10%</td>
-                            <td id='details'>detalhes</td>
-                        </tr>
+                        {
+                            contractList.map(
+                                contract =>
+                                <tr id='data'>
+                                    <td id='checkbox'>
+                                        <input type='checkbox' value={contract.retention}/>
+                                    </td>
+                                    <td id='name'>{contract.name}</td>
+                                    <td id='code'>{contract.code}</td>
+                                    <td id='retention'>{contract.retention}</td>
+                                    <td id='details'>
+                                        <div>
+                                            <CgSearch style = {{transform: 'rotate(90deg)'}}/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )
+                        }
                     </table>
                 </div>
             </div>
             <div id='footer'>
                 <img src={logo} alt='VFlows' />
-                <button id='previous'>Anterior</button>
-                <button id='next'>Próximo</button>
+                <button id='previous' tyoe='button' onClick={returnToLogin}>Anterior</button>
+                <button id='next' type='submit' onClick={next}>Próximo</button>
                 <h5>© 2022-2022 Construindo Patrimônios</h5>
             </div>
         </Container>
@@ -165,6 +135,16 @@ const Container = styled.div`
         border-radius: 5px;
 
         position: relative;
+    }
+
+    div#data h2 {
+        display: flex;
+    }
+
+    div#data h2 p {
+        font-weight: 400;
+        font-style: italic;
+        margin-left: 20px;
     }
 
     div#data h2#company-name {
@@ -332,7 +312,6 @@ const Container = styled.div`
     button#previous {
         background-color: #FFC043;
         right: 34%;
-
     }
 
     button#next {

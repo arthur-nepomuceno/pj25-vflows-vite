@@ -1,4 +1,4 @@
-/* 
+/*
 sources:
 https://brasil.io/dataset/documentos-brasil/documents/
 https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp
@@ -85,6 +85,50 @@ const CNPJ_List = [
     }
 ];
 
+const contractList = [
+    {
+        name: 'Título do Primeiro Contrato de Exemplo',
+        code: '11002200-01',
+        retention: '5%',
+    },
+    {
+        name: 'Título do Segundo Contrato de Exemplo',
+        code: '11002200-01',
+        retention: '10%',
+    },
+    {
+        name: 'Título do Terceiro Contrato de Exemplo',
+        code: '11002200-01',
+        retention: '5%',
+    },
+    {
+        name: 'Título do Quarto Contrato de Exemplo',
+        code: '11002200-01',
+        retention: '15%',
+    },
+    {
+        name: 'Título do Quinto Contrato de Exemplo',
+        code: '11002200-01',
+        retention: '5%',
+    },
+    {
+        name: 'Título do Sexto Contrato de Exemplo',
+        code: '11002200-01',
+        retention: '15%',
+    },
+    {
+        name: 'Título do Sétimo Contrato de Exemplo',
+        code: '11002200-01',
+        retention: '5%',
+    },
+    {
+        name: 'Título do Oitavo Contrato de Exemplo',
+        code: '11002200-01',
+        retention: '10%',
+    }
+]
+
 export {
-    CNPJ_List
+    CNPJ_List,
+    contractList
 }
