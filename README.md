@@ -15,12 +15,6 @@
 
 https://pj25-vflows-vite.vercel.app/
 
-## Start here
-
-This project is part of the selection process for the company VFlows.
-Specialized in BPM projects (Business Process Management), through the use of software platforms 
-VFlows provides other companies with solutions that bring tangible benefits and transform the business of their clients. 
-
 ## Summary
    - [Brief in](#brief-in)
    - [Introduction](#introduction)
