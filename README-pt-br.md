@@ -15,12 +15,6 @@
 
 https://pj25-vflows-vite.vercel.app/
 
-## Comece aqui
-
-Este projeto é parte do processo seletivo para a empresa VFlows.
-Especializados em projetos BPM (Business Process Management), através do uso de plataformas de software 
-a VFlows proporciona às demais empresas soluções que geram benefícios tangíveis e transformam o negócio de seus clientes. 
-
 ## Sumário
    - [Apresentação](#apresentação)
    - [Introdução](#introdução)
